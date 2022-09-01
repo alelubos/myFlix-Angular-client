@@ -1,0 +1,36 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Rokkitt", serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    hsl(260, 95%, 65%) 0%,
+    hsl(255, 80%, 50%) 40%,
+
+    hsl(258, 90%, 45%) 50%,
+    hsl(255, 86%, 35%) 60%,
+    hsl(250, 59%, 5%) 100%
+  );
+}
+
+.white {
+  color: white;
+  font-weight: 100;
+  font-size: 2.6rem;
+}
+
+.title-color {
+  color: hsl(0, 90%, 55%);
+  text-shadow: 2px 2px 3px black;
+  font-size: 3rem;
+  font-weight: 800;
+}
