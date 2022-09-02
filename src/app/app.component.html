@@ -1,5 +1,18 @@
-<div class="container">
+<div class="main-page container">
   <h1 class="white">
     Welcome to <br /><span class="title-color">TOPFLIX</span>
   </h1>
+  <div>
+    <button
+      mat-raised-button
+      (click)="openUserResgistrationDialog()"
+      style="margin-right: 10px"
+      color="accent"
+    >
+      SIGN UP
+    </button>
+    <button mat-raised-button (click)="openUserLoginDialog()" color="primary">
+      LOG IN
+    </button>
+  </div>
 </div>
