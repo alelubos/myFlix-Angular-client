@@ -14,13 +14,13 @@ export class AppComponent {
 
   openUserResgistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
-      width: '300px',
+      width: '280px',
     });
   }
 
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
-      width: '300px',
+      width: '280px',
     });
   }
 }

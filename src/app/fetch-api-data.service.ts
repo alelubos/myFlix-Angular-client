@@ -26,11 +26,13 @@ export class FetchApiDataService {
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
+      console.error('Some error occurred:', error.error);
     } else {
       console.error(
         `Error Status code ${error.status}, Error body is: ${error.error}`
       );
+      // Alert user the type of Error
+      window.alert(error.error + '. Try Again!');
     }
     throwError(
       () => new Error('Something bad happened; please try again later.')
@@ -41,12 +43,8 @@ export class FetchApiDataService {
 
   // POST /users -User Registration-
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(
-      'From userRegistration in fetch-api-data.service.ts: ',
-      userDetails
-    );
     return this.http
-      .post(apiUrl + 'users', userDetails)
+      .post(apiUrl + 'users', userDetails, { responseType: 'json' })
       .pipe(catchError(this.handleError));
   }
 
