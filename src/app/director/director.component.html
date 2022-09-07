@@ -1,0 +1,19 @@
+<div class="wrapper">
+  Director
+  <h1 mat-dialog-title color="primary">{{ data.name }}</h1>
+  <br />
+  <mat-dialog-content>
+    <p><span class="bolder">BORN:</span> {{ data.birthYear }}</p>
+    <p><span class="bolder">SHORT BIO:</span> {{ data.bio }}</p>
+  </mat-dialog-content>
+
+  <button
+    class="close"
+    color="white"
+    mat-stroked-button
+    mat-dialog-close
+    aria-label="Close the Director Dialog"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

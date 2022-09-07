@@ -1,0 +1,67 @@
+.movie-view {
+  display: flex;
+  background-color: hsl(212, 28%, 54%);
+  padding: 100px 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mat-card {
+  padding-bottom: 9px;
+}
+
+.movie-card {
+  margin: 10px;
+  background-color: whitesmoke;
+  width: 225px;
+  border-radius: 0;
+}
+
+.movie-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 225px;
+  padding-bottom: 16px;
+  font-weight: bolder;
+  font-size: 1.27rem;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: -5px;
+  border-top: 1px solid hsl(212, 43%, 80%);
+  text-align: center;
+}
+
+.mat-button {
+  padding: 4px 8px;
+  font-size: 1rem;
+}
+
+.mat-button:hover {
+  text-decoration: underline;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-around;
+  color: hsl(207, 28%, 72%);
+}
+
+@media (min-width: 800px) {
+  .movie-view {
+    padding: 50px 50px;
+  }
+  .movie-card {
+    margin: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .movie-view {
+    padding: 50px 150px;
+  }
+}

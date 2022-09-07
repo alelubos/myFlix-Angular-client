@@ -15,8 +15,9 @@ const apiUrl = 'https://top-flix.herokuapp.com/';
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  // Inject the HttpClient module to the constructor params
-  // This provides HttpClient to the entire class, available via: this.http
+  // Inject the HttpClient module into constructor params. By making it
+  // private, becomes available to entire class (as this.http) rather than
+  // just the constructor
   constructor(private http: HttpClient) {}
 
   private extractResponseData(res: any): any {
@@ -40,9 +41,9 @@ export class FetchApiDataService {
   }
 
   //API CALLS-------------------------------------------------------------------
-
   // POST /users -User Registration-
   public userRegistration(userDetails: any): Observable<any> {
+    // We return the Observable<Response> to whoever consumes this method:
     return this.http
       .post(apiUrl + 'users', userDetails, { responseType: 'json' })
       .pipe(catchError(this.handleError));
@@ -50,14 +51,13 @@ export class FetchApiDataService {
 
   // POST /login -User Login- returns JSON object: { user, token }
   public userLogin(userCredentials: any): Observable<any> {
-    console.log(userCredentials);
     return this.http
       .post(apiUrl + 'login', userCredentials)
       .pipe(catchError(this.handleError));
   }
 
   // GET /movies -Retrieve All Movies as JSON object-
-  getAllMovies(): Observable<any> {
+  public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'movies', {

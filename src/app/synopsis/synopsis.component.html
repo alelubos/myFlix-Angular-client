@@ -1,0 +1,18 @@
+<div class="wrapper">
+  Movie Title
+  <h1 mat-dialog-title color="primary">{{ data.title }}</h1>
+  <br />
+  <mat-dialog-content>
+    <p><span class="bolder">Synopsis:</span> {{ data.synopsis }}</p>
+  </mat-dialog-content>
+
+  <button
+    class="close"
+    color="white"
+    mat-flat-button
+    mat-dialog-close
+    aria-label="Close the Genre Dialog"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

@@ -1,4 +1,8 @@
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: "Rokkitt", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -8,7 +12,7 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("../assets/space.png");
+  background-image: url("../../assets/space.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,7 +20,6 @@ h1 {
 
 .white {
   color: white;
-  font-weight: 100;
   font-size: 2.6rem;
   line-height: 1;
 }
@@ -25,5 +28,5 @@ h1 {
   color: #d500f9;
   text-shadow: 2px 2px 3px black;
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 700;
 }

@@ -22,23 +22,28 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
-      // Given a successful result
-      next: (response) => {
-        console.log('From Register User: ' + response);
-        // close the Registration Form Modal
-        this.dialogRef.close();
-        // Inform the user the registration succeeded
-        this.snackBar.open('You are now registered. Please Login!', 'OK', {
-          duration: 2000,
-        });
-      },
-      // Given an Error
-      error: (error) => {
-        this.snackBar.open('Something went wrong. Try Again!', 'OK', {
-          duration: 2000,
-        });
-      },
-    });
+    this.fetchApiData
+      .userRegistration(this.userData)
+      // userRegistration returns an Observable, so we can subscribe to
+      // it, to get informed when it result is resolved:
+      .subscribe({
+        // Given a successful result
+        next: (response) => {
+          console.log('From Register User: ' + response);
+          // close the Registration Form Modal
+          this.dialogRef.close();
+          // Inform the user the registration succeeded
+          this.snackBar.open('You are now registered! Please Log in', 'OK', {
+            duration: 2000,
+          });
+          // Here we could alternatively Log the user in directly and redirect to the Movie List
+        },
+        // Given an Error
+        error: (error) => {
+          this.snackBar.open('Something went wrong. Try Again!', 'OK', {
+            duration: 2000,
+          });
+        },
+      });
   }
 }

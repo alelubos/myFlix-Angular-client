@@ -1,0 +1,39 @@
+$primary: hsl(207, 58%, 45%);
+h1,
+p {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+h1 {
+  color: $primary;
+  font-weight: 800;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.bolder {
+  font-weight: 800;
+}
+
+.wrapper {
+  position: relative;
+  padding: 2px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -18px;
+  margin-right: -18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
