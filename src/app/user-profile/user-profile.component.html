@@ -1,1 +1,77 @@
-<p>user-profile works!</p>
+<div class="container">
+  <mat-card>
+    <mat-card-title>My Profile</mat-card-title>
+    <mat-card-subtitle
+      >To update your profile, all fields must be completed.</mat-card-subtitle
+    >
+    <mat-card-content>
+      <form #f="ngForm">
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.username"
+            placeholder="Username"
+            type="text"
+            name="username"
+            minlength="6"
+            [disabled]="!edit.checked"
+            required
+          />
+          <mat-error color="accent">Minimum length: 6 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.password"
+            type="text"
+            placeholder="password"
+            name="password"
+            minlength="6"
+            required
+            [disabled]="!edit.checked"
+          />
+          <mat-hint>Enter your old password or a new one.</mat-hint>
+          <mat-error color="accent">Minimum password: 6 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.email"
+            type="email"
+            placeholder="email"
+            email="true"
+            name="email"
+            required
+            [disabled]="!edit.checked"
+          />
+          <mat-error>Please enter a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [ngModel]="userData.birthday | date: 'yyyy-MM-dd'"
+            (ngModel)="userData.birthday = $any($event).target.valueAsDate"
+            type="date"
+            placeholder="birthday"
+            name="birthday"
+            [disabled]="!edit.checked"
+            required
+          />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <mat-slide-toggle class="example-margin" color="accent" #edit>
+        EDIT
+      </mat-slide-toggle>
+      <button
+        mat-raised-button
+        (click)="updateUser()"
+        color="accent"
+        [disabled]="!f.valid"
+      >
+        Update
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

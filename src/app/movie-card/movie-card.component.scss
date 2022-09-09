@@ -14,7 +14,7 @@
 .movie-card {
   margin: 10px;
   background-color: whitesmoke;
-  width: 225px;
+  width: 235px;
   border-radius: 0;
 }
 
@@ -22,7 +22,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 225px;
+  width: 235px;
   padding-bottom: 16px;
   font-weight: bolder;
   font-size: 1.27rem;
@@ -31,13 +31,19 @@
 }
 
 .subtitle {
-  margin-bottom: -5px;
+  padding-bottom: 0px;
+  margin-bottom: -10px;
   border-top: 1px solid hsl(212, 43%, 80%);
   text-align: center;
 }
 
+.mini-title {
+  padding-top: 0px;
+}
 .mat-button {
   padding: 4px 8px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
   font-size: 1rem;
 }
 

@@ -1,15 +1,17 @@
 <h1 mat-card-title>SIGN UP</h1>
 <mat-dialog-content>
-  <form>
+  <form #f="ngForm">
     <mat-form-field>
       <input
         matInput
         [(ngModel)]="userData.username"
-        placeholder="username"
+        placeholder="Username"
         type="text"
         name="username"
+        minlength="6"
         required
       />
+      <mat-error>Minimum username: 6 characters</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -18,8 +20,10 @@
         type="password"
         placeholder="password"
         name="password"
+        minlength="6"
         required
       />
+      <mat-error>Minimum password: 6 characters</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -27,9 +31,11 @@
         [(ngModel)]="userData.email"
         type="email"
         placeholder="email"
+        email="true"
         name="email"
         required
       />
+      <mat-error>Please enter a valid email</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -43,7 +49,12 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button (click)="registerUser()" color="accent">
+  <button
+    mat-raised-button
+    (click)="registerUser()"
+    color="accent"
+    [disabled]="!f.valid"
+  >
     SIGN UP
   </button>
 </mat-dialog-actions>

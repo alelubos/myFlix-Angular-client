@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>LOG IN</h2>
 
 <mat-dialog-content>
-  <form>
+  <form #f="ngForm">
     <mat-form-field>
       <input
         matInput
@@ -9,8 +9,10 @@
         placeholder="username"
         type="text"
         name="username"
+        minlength="6"
         required
       />
+      <mat-error>Username: has minimum 6 characters</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -19,11 +21,20 @@
         type="password"
         placeholder="password"
         name="password"
+        minlength="6"
         required
       />
+      <mat-error>Password has minimum 6 characters</mat-error>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button (click)="userLogin()" color="primary">LOGIN</button>
+  <button
+    mat-raised-button
+    (click)="userLogin()"
+    color="primary"
+    [disabled]="!f.valid"
+  >
+    LOGIN
+  </button>
 </mat-dialog-actions>

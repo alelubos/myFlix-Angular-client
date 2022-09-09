@@ -1,0 +1,26 @@
+mat-card {
+  min-width: 280px;
+  max-width: 600px;
+}
+mat-card-title {
+  margin-bottom: 20px;
+}
+mat-form-field {
+  display: block;
+  margin-bottom: 1rem;
+}
+mat-slide-toggle {
+  margin-right: auto;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right bottom, #1565c0, #6a1b9a);
+  //   background-image: url("../../assets/space.png");
+  //   background-position: center center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+}
