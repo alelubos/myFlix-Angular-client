@@ -1,9 +1,16 @@
+<nav-bar></nav-bar>
 <div class="container">
   <mat-card>
-    <mat-card-title>My Profile</mat-card-title>
-    <mat-card-subtitle
-      >To update your profile, all fields must be completed.</mat-card-subtitle
-    >
+    <mat-card-header>
+      <mat-card-title>My Profile</mat-card-title>
+      <mat-card-subtitle [hidden]="!edit.checked"
+        >To update your profile, all fields must be
+        completed.</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-slide-toggle class="example-margin" color="accent" #edit>
+      Edit your profile
+    </mat-slide-toggle>
     <mat-card-content>
       <form #f="ngForm">
         <mat-form-field>
@@ -19,20 +26,21 @@
           />
           <mat-error color="accent">Minimum length: 6 characters</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            [(ngModel)]="userData.password"
-            type="text"
-            placeholder="password"
-            name="password"
-            minlength="6"
-            required
-            [disabled]="!edit.checked"
-          />
-          <mat-hint>Enter your old password or a new one.</mat-hint>
-          <mat-error color="accent">Minimum password: 6 characters</mat-error>
-        </mat-form-field>
+        <div [hidden]="!edit.checked">
+          <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.password"
+              type="text"
+              placeholder="password"
+              name="password"
+              minlength="6"
+              required
+            />
+            <mat-hint>Type your password or Enter a new one.</mat-hint>
+            <mat-error color="accent">Minimum password: 6 characters</mat-error>
+          </mat-form-field>
+        </div>
         <mat-form-field>
           <input
             matInput
@@ -49,8 +57,7 @@
         <mat-form-field>
           <input
             matInput
-            [ngModel]="userData.birthday | date: 'yyyy-MM-dd'"
-            (ngModel)="userData.birthday = $any($event).target.valueAsDate"
+            [(ngModel)]="userData.birthday"
             type="date"
             placeholder="birthday"
             name="birthday"
@@ -61,9 +68,9 @@
       </form>
     </mat-card-content>
     <mat-card-actions align="end">
-      <mat-slide-toggle class="example-margin" color="accent" #edit>
-        EDIT
-      </mat-slide-toggle>
+      <button mat-raised-button (click)="deleteUser()" color="warn">
+        Delete
+      </button>
       <button
         mat-raised-button
         (click)="updateUser()"

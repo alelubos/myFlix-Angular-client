@@ -1,8 +1,4 @@
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1 {
   font-family: "Rokkitt", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -25,7 +21,7 @@ h5 {
 }
 
 .title-color {
-  color: #d500f9;
+  color: hsl(277, 95%, 55%);
   text-shadow: 2px 2px 3px black;
   font-size: 3rem;
   font-weight: 700;

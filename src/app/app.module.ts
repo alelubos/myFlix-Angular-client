@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // Components
 import { AppComponent } from './app.component';
 import { DirectorComponent } from './director/director.component';
@@ -26,6 +28,7 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 // Services
 import { FetchApiDataService } from './fetch-api-data.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 // Routes Configuration
 const appRoutes: Routes = [
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
     DirectorComponent,
     GenreComponent,
     SynopsisComponent,
+    NavBarComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -60,6 +64,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatToolbarModule,
+    MatTooltipModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [FetchApiDataService],

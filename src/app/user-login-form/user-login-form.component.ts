@@ -27,10 +27,10 @@ export class UserLoginFormComponent implements OnInit {
     this.fetchApiData.userLogin(this.userData).subscribe({
       // Given a successful result
       next: (response) => {
-        console.log(response);
         // Store credentials in localStorage
         const { user, token } = response;
         localStorage.setItem('username', user.username);
+        localStorage.setItem('favoriteMovies', user.favoriteMovies);
         localStorage.setItem('token', token);
         // close the Registration Form Modal on success
         this.dialogRef.close();
