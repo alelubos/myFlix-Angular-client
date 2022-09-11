@@ -130,7 +130,7 @@ export class FetchApiDataService {
   }
 
   // POST /users/[username]/favorites/[movieID] -Add Movie to user's favorites-
-  addUsersFavorite(movieID: string): Observable<any> {
+  addUserFavorite(movieID: string): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http
@@ -171,7 +171,7 @@ export class FetchApiDataService {
   }
 
   // DELETE /movies/[username]/favourites/[movieID] -Delete Movie from User's favourites-
-  deleteUsersFavorite(movieID: string): Observable<any> {
+  deleteUserFavorite(movieID: string): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http

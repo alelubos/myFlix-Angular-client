@@ -39,18 +39,21 @@ export class MovieCardComponent implements OnInit {
   toggleFavorite(id: string): void {
     let index = this.favorites.indexOf(id);
     if (index === -1) {
+      // Optimistic Update for more performant UX
       this.favorites.push(id);
-      this.fetchApi.addUsersFavorite(id).subscribe({
+      this.fetchApi.addUserFavorite(id).subscribe({
         next: (response) => {
           this.favorites = response.favoriteMovies;
         },
         error: (error) => {
+          // Reverse Optimistic Update
           this.favorites.pop();
+          console.log(error);
         },
       });
     } else {
       this.favorites.splice(index, 1);
-      this.fetchApi.deleteUsersFavorite(id).subscribe({
+      this.fetchApi.deleteUserFavorite(id).subscribe({
         next: (response) => {
           this.favorites = response.favoriteMovies;
         },
