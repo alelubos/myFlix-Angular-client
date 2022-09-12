@@ -47,7 +47,7 @@
       <button
         mat-icon-button
         aria-label="heart icon toggles movie as favorite or not favorite"
-        (click)="toggleFavorite(movie._id)"
+        (click)="toggleFavorite(movie._id, movie.title)"
         [color]="isFavorite(movie._id) ? 'warn' : ''"
       >
         <mat-icon>{{

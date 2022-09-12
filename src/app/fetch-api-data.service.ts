@@ -27,9 +27,9 @@ export class FetchApiDataService {
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error);
+      console.log('Some error occurred:', error.error);
     } else {
-      console.error(
+      console.log(
         `Error Status code ${error.status}, Error body is: ${error.error}`
       );
       // Alert user the type of Error
@@ -134,7 +134,7 @@ export class FetchApiDataService {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + `users/${username}/favorites/${movieID}`, {
+      .post(apiUrl + `users/${username}/favorites/${movieID}`, movieID, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -145,7 +145,7 @@ export class FetchApiDataService {
   // PUT /users/[username] -Update information from Single user-
   editUser(updatedUser: any): Observable<any> {
     updatedUser['birthday'] = JSON.stringify(updatedUser.birthday).slice(1, 11);
-    console.log('editUser: ', updatedUser.birthday);
+    // console.log('editUser: ', updatedUser.birthday);
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http

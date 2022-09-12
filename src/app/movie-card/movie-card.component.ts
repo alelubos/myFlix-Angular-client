@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 // Custom Components
 import { DirectorComponent } from '../director/director.component';
 import { GenreComponent } from '../genre/genre.component';
 import { SynopsisComponent } from '../synopsis/synopsis.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -16,7 +16,11 @@ export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favorites: any;
 
-  constructor(public fetchApi: FetchApiDataService, public dialog: MatDialog) {}
+  constructor(
+    public fetchApi: FetchApiDataService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getMovies();
@@ -36,7 +40,7 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  toggleFavorite(id: string): void {
+  toggleFavorite(id: string, title: string): void {
     let index = this.favorites.indexOf(id);
     if (index === -1) {
       // Optimistic Update for more performant UX
@@ -44,21 +48,39 @@ export class MovieCardComponent implements OnInit {
       this.fetchApi.addUserFavorite(id).subscribe({
         next: (response) => {
           this.favorites = response.favoriteMovies;
+          this.snackBar.open(`"${title}" was added to your Favorites.`, 'OK', {
+            duration: 2000,
+          });
         },
         error: (error) => {
           // Reverse Optimistic Update
           this.favorites.pop();
-          console.log(error);
+          this.snackBar.open(
+            `Something went wrong "${title}" was not added to your Favorites.`,
+            'OK',
+            {
+              duration: 2000,
+            }
+          );
         },
       });
     } else {
       this.favorites.splice(index, 1);
       this.fetchApi.deleteUserFavorite(id).subscribe({
         next: (response) => {
-          this.favorites = response.favoriteMovies;
+          this.snackBar.open('Movie removed from favorites', 'OK', {
+            duration: 2000,
+          });
         },
         error: (error) => {
           this.favorites.push(id);
+          this.snackBar.open(
+            'Something went wrong. Movie was not removed from favorites',
+            'OK',
+            {
+              duration: 2000,
+            }
+          );
         },
       });
     }
