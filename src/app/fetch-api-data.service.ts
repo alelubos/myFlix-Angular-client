@@ -30,13 +30,16 @@ export class FetchApiDataService {
       console.log('Some error occurred:', error.error);
     } else {
       console.log(
-        `Error Status code ${error.status}, Error body is: ${error.error}`
+        `Error Status code: ${error.status}, Error body is: ${error.error}, Error message: ${error.message}`
       );
       // Alert user the type of Error
-      window.alert(error.error + '. Try Again!');
+      window.alert(error.message + '. Try Again!');
     }
     throwError(
-      () => new Error('Something bad happened; please try again later.')
+      () =>
+        new Error(
+          `Something went wrong: ${error.error} Please try again later.`
+        )
     );
   }
 
@@ -162,10 +165,11 @@ export class FetchApiDataService {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http
-      .delete(apiUrl + `users/${username}`, username, {
+      .delete(apiUrl + `users/${username}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        responseType: 'text',
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }

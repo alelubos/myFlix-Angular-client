@@ -45,9 +45,13 @@ export class UserLoginFormComponent implements OnInit {
       // Given an Error
       error: (error) => {
         console.error(error.error);
-        this.snackBar.open('There was a problem. Login failed!', 'OK', {
-          duration: 2000,
-        });
+        this.snackBar.open(
+          'Login failed! Your username or password may be incorrect. Try again.',
+          'OK',
+          {
+            duration: 3500,
+          }
+        );
       },
     });
   }

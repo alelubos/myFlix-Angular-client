@@ -73,8 +73,22 @@ export class UserProfileComponent implements OnInit {
     let result = window.confirm(
       'Are you sure? Deleting your profile will unregister you.'
     );
+    // If user confirms account deletion
     if (result) {
-      this.fetchApiData.deleteUser().subscribe();
+      this.fetchApiData.deleteUser().subscribe({
+        next: (response) => {
+          this.snackBar.open('Your account was erased!', 'OK', {
+            duration: 4000,
+          });
+          setTimeout(() => {
+            localStorage.clear();
+            this.router.navigate(['welcome']);
+          }, 3000);
+        },
+        error: (error) => {
+          console.log('Error from deleteUser() in user-profile: ', error);
+        },
+      });
     } else {
       return;
     }
