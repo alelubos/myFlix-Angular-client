@@ -30,7 +30,10 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { FetchApiDataService } from './fetch-api-data.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
-// Routes Configuration
+/**
+ *  Routes Configuration
+ *  @constant appRoutes -Array of objects, each representing a route
+ */
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
@@ -71,4 +74,8 @@ const appRoutes: Routes = [
   providers: [FetchApiDataService],
   bootstrap: [AppComponent],
 })
+
+/**
+ * Root App Module
+ */
 export class AppModule {}

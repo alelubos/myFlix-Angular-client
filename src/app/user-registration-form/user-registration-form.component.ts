@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // Service for Backend Data Requests
 import { FetchApiDataService } from '../fetch-api-data.service';
 
+/**
+ * Dialog Form Component for Users to Register and initialize their account in the DB.
+ */
 @Component({
   selector: 'registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -26,6 +29,10 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Sends form data to backend calling @function userRegistration from FetchApiDataService.
+   * Then redirects the user to 'welcome' page to log in.
+   */
   registerUser(): void {
     this.fetchApiData
       .userRegistration(this.userData)

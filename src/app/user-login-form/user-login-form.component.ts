@@ -6,6 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // Service for Backend Data Requests
 import { FetchApiDataService } from '../fetch-api-data.service';
 
+/**
+ * Dialog Form Component for User to Login entering username and password
+ *
+ */
 @Component({
   selector: 'login-form',
   templateUrl: './user-login-form.component.html',
@@ -23,6 +27,9 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Function to login user by calling @function userLogin from FetchApiDataService
+   */
   userLogin(): void {
     this.fetchApiData.userLogin(this.userData).subscribe({
       // Given a successful result

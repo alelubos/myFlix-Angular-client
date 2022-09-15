@@ -11,14 +11,23 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Triggers router navigation to 'movies' page
+   */
   navigateToMovies(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * Triggers router navigation to 'profile' route
+   */
   navigateToProfile(): void {
     this.router.navigate(['profile']);
   }
 
+  /**
+   * Triggers router navigation to 'welcome' page after logging user out
+   */
   logOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);

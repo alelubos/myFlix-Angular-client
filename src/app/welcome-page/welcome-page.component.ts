@@ -4,6 +4,9 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { Router } from '@angular/router';
 
+/**
+ * Displays Home View for user to register or to log in
+ */
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
@@ -19,12 +22,18 @@ export class WelcomePageComponent implements OnInit {
     // }
   }
 
+  /**
+   * Opens dialog form to register
+   */
   openUserResgistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '280px',
     });
   }
 
+  /**
+   * opens dialog form to log in
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '280px',
