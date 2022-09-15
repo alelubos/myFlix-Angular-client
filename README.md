@@ -13,10 +13,29 @@ Together frontend and backend conform the full-stack application, based on the *
 - **Angular**: a TypeScript-based framework from Google for developing single-page applications;
 - **Node.js**: a performant JavaScript runtime in the backend;
 
+On top of these, the following dependencies were added to the project:
+
+- **Angular Material**: a modern component-based UI library for Angular that promotes reusability;
+- **TypeDoc**: A library to automatically generate documentation based on block comments in the source code for **TypeScript**;
+
 ## User Stories
 
 - As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
+
+  Broken down into smaller user stories:
+
+1. As a registered user visiting the app’s homepage, I should be able to click a link to log in with my credentials, so that I can see/navigate a list of all its movies;
+2. As a logged user that sees the list of movies, I should be able to click on a button, so that I can see that movie’s synopsis;
+3. As a user that sees a movie’s details view, I should be able to click on a button, so that I can see its director’s details view;
+4. As a user that sees a movie’s details view, I should be able to click on a button, so that I can see its Genre’s details view;
+
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
+
+  Broken down into smaller user stories:
+
+1. As a new user, I should be able to fill a register form, so that I can create an account to use the app.
+2. As a logged user, I should be able to access my profile view, so that I can see/edit my information.
+3. As a logged user, in the movie view I should be able to click on a movie’s favorite icon, so that I can add / remove the movie from my favorites list.
 
 ## Key Features
 
