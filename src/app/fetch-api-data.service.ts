@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 /**
  * Base URL for API services
  */
-const apiUrl = 'https://top-flix.herokuapp.com/';
+const apiUrl = 'https://careful-teal-bighorn-sheep.cyclic.app/';
 
 /**
  * Service Component with methods to call HTTP Endpoints
