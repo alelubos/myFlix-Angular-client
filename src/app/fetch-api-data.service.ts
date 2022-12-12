@@ -150,7 +150,7 @@ export class FetchApiDataService {
    * @param username
    * @returns observable that resolves in as single user JSON object
    */
-  getUser(username: string): Observable<any> {
+  public getUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + `users/${username}`, {
@@ -165,11 +165,11 @@ export class FetchApiDataService {
    * Calls API Endpoint to Retrieve favourite movies from the user
    * @returns observable that resolves in user's favorite movies (Array<MovieID>) as JSON object
    */
-  getUsersFavorites(): Observable<any> {
+  public getUsersFavorites(): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + `users/${username}/favourites`, {
+      .get(apiUrl + `users/${username}/favorites`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),

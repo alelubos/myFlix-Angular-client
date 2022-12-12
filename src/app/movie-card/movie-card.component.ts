@@ -17,7 +17,7 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-  favorites: any;
+  favorites: any[] = [];
 
   constructor(
     public fetchApi: FetchApiDataService,
@@ -27,16 +27,7 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    let list = localStorage.getItem('favoriteMovies');
-    this.favorites = list?.split(',');
-  }
-  /**
-   * Checks if a Movie is a favorite one, by verifying if its included in array favorites
-   * @param movieID property movie._id
-   * @returns boolean indicating if movie is favorite
-   */
-  isFavorite(movieID: string): boolean {
-    return this.favorites.includes(movieID);
+    this.getFavorites();
   }
 
   /**
@@ -46,9 +37,41 @@ export class MovieCardComponent implements OnInit {
   getMovies() {
     this.fetchApi.getAllMovies().subscribe({
       next: (response) => {
-        this.movies = response.sort((a: any, b: any) => a.title > b.title);
+        this.movies = response;
+        if (!sessionStorage.getItem('movieTitlesById')) {
+          const movieTitlesById = this.movies.reduce(
+            (obj, current) => ({ ...obj, [current._id]: current.title }),
+            {}
+          );
+          sessionStorage.setItem(
+            'movieTitlesById',
+            JSON.stringify(movieTitlesById)
+          );
+        }
       },
     });
+  }
+
+  /**
+   * Gets List of favorite Movies by calling @function getUser from FetchApiDataService
+   * @returns array of movie objects
+   */
+  getFavorites() {
+    const username = localStorage.getItem('username') || '';
+    this.fetchApi.getUser(username).subscribe({
+      next: (response) => {
+        this.favorites = response.favoriteMovies;
+      },
+    });
+  }
+
+  /**
+   * Checks if a Movie is a favorite one, by verifying if its included in array favorites
+   * @param movieID property movie._id
+   * @returns boolean indicating if movie is favorite
+   */
+  isFavorite(movieID: string): boolean {
+    return this.favorites.includes(movieID);
   }
 
   /**
@@ -75,7 +98,7 @@ export class MovieCardComponent implements OnInit {
             `Something went wrong "${title}" was not added to your Favorites.`,
             'OK',
             {
-              duration: 2000,
+              duration: 2500,
             }
           );
         },

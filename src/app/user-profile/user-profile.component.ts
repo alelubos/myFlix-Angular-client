@@ -20,7 +20,9 @@ export class UserProfileComponent implements OnInit {
     password: '',
     email: '',
     birthday: '',
+    favoriteMovies: [],
   };
+  favoriteTitles: string[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -37,13 +39,20 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser(username).subscribe({
       next: (response) => {
         let birthday = response.birthday.slice(0, 10);
-        console.log(birthday);
         this.userData = {
           username: response.username,
           email: response.email,
           birthday: birthday,
           password: '',
+          favoriteMovies: response.favoriteMovies,
         };
+        let movieTitles = sessionStorage.getItem('movieTitlesById');
+        if (movieTitles) {
+          let movieTitlesById = JSON.parse(movieTitles);
+          this.favoriteTitles = this.userData.favoriteMovies.map(
+            (id) => movieTitlesById[id]
+          );
+        }
       },
     });
   }
